@@ -36,7 +36,7 @@ function _asyncToGenerator(fn) {
                 {
                     case 0:
                         console.log("----------------------------------------case zero is triggered");
-                        console.log("sample data\n"+(event.split('{')[4]));
+                        console.log("sample data\n"+(event.split('{')[2]));
                         async function response(){
                         sample_data = await request.post({url:'api_url'}, function(err,httpResponse){ 
                         var messagebody = httpResponse.body; 
