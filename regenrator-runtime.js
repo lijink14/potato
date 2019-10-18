@@ -1,6 +1,6 @@
 require("regenerator-runtime/runtime");
-var request = require('request');
 var fs = require('fs');
+var request = require('sync-request');
 function f_read(){
 fs.readFile('test.txt', 'utf8', function(err, data) {
     if (err) throw err;
@@ -35,19 +35,15 @@ function _asyncToGenerator(fn) {
                 switch (_context.prev = _context.next)
                 {
                     case 0:
-                        console.log("----------------------------------------case zero is triggered");
+                        console.log("----------------------------------------case zero is triggered which inclues api call");
                         console.log("sample data\n"+(event.split('{')[2]));
-                        async function response(){
-                        sample_data = await request.post({url:'api_url'}, function(err,httpResponse){ 
-                        var messagebody = httpResponse.body; 
-                        console.log(messagebody);
-                        return messagebody;    })}
-                        response();
+                        var apicall = request('POST','api_url');
+                        sample_data = apicall.getBody();
                         _context.next = 1;
                         return;
                     case 1:
                         console.log("----------------------------------------case one is triggered");
-                        console.log("Data recieved form api call- case 1" + " " + sample_data);
+                        console.log("Data recieved form api call- (case 0)" + " " +JSON.parse(sample_data).body);
                         console.log("sample data\n"+(event.split('{')[3]));
                         _context.next =2;
                         array =[];
