@@ -39,7 +39,7 @@ function _asyncToGenerator(fn) {
                         console.log("----------------------------------------case zero is triggered which inclues api call");
                         console.log("sample data\n"+(event.split('{')[2]));
                        var  apicall =new Promise((resolve,reject)=>{
-                            request.get({url:'https://u6cwg939n5.execute-api.eu-west-1.amazonaws.com/default/'}, function(err,httpResponse){ 
+                            request.get({url:'api_url'}, function(err,httpResponse){ 
                             if(err){
                                 reject(err)
                             }
